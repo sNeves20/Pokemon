@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Ash {
+	private double caught;
+	Square position = new Square(0,0);
+	public TreeSet <Square> path = new TreeSet<Square>();
+
+	public Ash() {
+		this.caught = 0;
+	}
+	
+	private void Move (String input) {
+		
+		
+	}
+}

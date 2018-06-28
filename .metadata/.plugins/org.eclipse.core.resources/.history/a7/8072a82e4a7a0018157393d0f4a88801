@@ -1,0 +1,30 @@
+/**
+ *: pos_x - position of the x coordinate of the node in the grid, the starting nodes' position will be x = 0
+ * 			  pos_y - position of the y coordinate of the node in the grid, the starting nodes' position will be y = 0
+ * 
+ * 
+ * **/
+public class Square {
+	
+	private int pos_x, pos_y;
+	private Square left, right, up, down;
+	
+	public Square(int x, int y) {
+		this.pos_x = x;
+		this.pos_y = y;
+		
+		this.left = null;
+		this.right = null;
+		this.up = null;
+		this.down = null;
+	}
+	
+	public int x_getter() {
+		return pos_x;
+	}
+	public int y_getter() {
+		return pos_y;
+	}
+	
+	
+}

@@ -1,0 +1,11 @@
+
+public class Square {
+	int pos_x, pos_y;
+	
+	public Square(int x, int y) {
+		this.pos_x = x;
+		this.pos_y = y;
+	}
+	
+	
+}

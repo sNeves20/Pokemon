@@ -1,0 +1,13 @@
+
+public class Ash {
+	private double caught;
+	
+	public Ash(String stdin) {
+		this.caught = 0;
+		
+	}
+	
+	private void Move() {
+		
+	}
+}

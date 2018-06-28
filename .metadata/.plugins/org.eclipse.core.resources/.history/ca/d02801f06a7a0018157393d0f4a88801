@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class Ash {
+	private double caught;
+	Square position = new Square(0,0);
+	public TreeSet <Square> path = new TreeSet<Square>();
+	
+	//Class Constructor, will initialize "Ash" on a Square, positioned on the (0,0)
+	public Ash() {
+		path.add(position);
+		this.caught = 1;
+	}
+	private void Move (String input) {
+		char move;
+		int n = input.length();
+		for(int i = 0; i < n; i++ ) {
+			move = input.charAt(i);
+		}
+	}
+}
