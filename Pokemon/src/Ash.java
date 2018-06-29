@@ -1,50 +1,78 @@
 import java.util.*;
-
+/*
+ * Attributes: int caught - amount of pokemon that Ash caught so far on his adventure
+ * 			   Square position - Current position that Ash is in 
+ * 			   HashSet<Square> position - HashSet of Squares, it stores the squares explored by Ash so far
+ * 
+ * Constructor: Ash() - Initializes Ashs' position on a square with coordinates (x,y)=(0;0) and also sets 
+ * 						the amount of pokemon caught to 1
+ * 
+ * Methods: void Move - Arguments: String input - string with a sequence of moves 
+ * 						Receives an input of moves (N,S,E,O) and sets the value of pos_x and pos_y of each new
+ * 						position, according to the current position and to the move. If that new position was 
+ * 						previously visited it is not added to the HashSet, otherwise it is added and the number 
+ * 						of caught pokemon is increased. Also the current position is then updated to be the new position.
+ * 						[Move Example: Position (x,y) = (0;1), Move 'NO' -> New position (x,y)=(0;2)->New Position (x,y)=(-1;2)]
+ * */
 public class Ash {
-	private double caught;
-	Square position = new Square(0,0);
-	public TreeSet <Square> path = new TreeSet<Square>();
+	private int caught;
+	private Square position = new Square(0,0);
+	private HashSet <Square> path = new HashSet<Square>();
 	
 	//Class Constructor, will initialize "Ash" on a Square, in the position (0,0) 
 	public Ash() {
-		path.add(position);
+		this.path.add(new Square(0,0));
 		this.caught = 1;
 	}
-	private void Move (String input) {
+	
+	//Method that receives a String of movements and sees the new position of Ash, as well as the caught pokemon 
+	public void Move (String input) {
+		
 		char move;
 		int n = input.length();
+		boolean other = false;
+		
+		//For each character of the 
 		for(int i = 0; i < n; i++ ) {
 			move = input.charAt(i);
 			Square new_pos = new Square(position.getPos_x(), position.getPos_y());
-			
+			//Checking which direction the movement was and setting the new position coordinates accordingly 
 			switch(move) {
 				case 'N': 
 					new_pos.setPos_y(new_pos.getPos_y() +1);
-					new_pos.down = position;
-					position.up = new_pos;
 					break;
 				case 'S': 
 					new_pos.setPos_y(new_pos.getPos_y() - 1);
-					new_pos.up = position;
-					position.down =new_pos;
 					break;
 				case 'E': 
 					new_pos.setPos_x(new_pos.getPos_x() + 1);
-					new_pos.left = position;
-					position.right=new_pos;
 					break;
 				case 'O':
 					new_pos.setPos_x(new_pos.getPos_x()-1);
-					new_pos.right = position;
-					position.left = new_pos;
 					break;
-				default: System.out.println("A direction inserted is not valid!");
+				default: 
+					if(!other) {
+						System.out.println("One or more inserted moves was invalid and was dismissed!");
+						other = true;
+					}
 			}
 			
 			//If the new position is not in the tree already, it will be added and a new pokemon is caught
 			if(path.add(new_pos)) {
-				caught ++;
+				caught ++;				
 			}
+			
+			//Defines the new position as the current position of the player 
+			position.setPos_x(new_pos.getPos_x());
+			position.setPos_y(new_pos.getPos_y());
+			
 		}
 	}
+	
+	//Getter of the caught variable, returns the amount of pokemon caught
+	public int getCaught() {
+		return caught;
+	}
+	
+	
 }
