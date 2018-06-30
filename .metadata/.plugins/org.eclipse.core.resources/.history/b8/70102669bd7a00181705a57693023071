@@ -1,0 +1,58 @@
+import java.util.*;
+
+public class Ash {
+	private int caught;
+	Square position = new Square(0,0);
+	private TreeSet <Square> path = new TreeSet<Square>();
+	
+	//Class Constructor, will initialize "Ash" on a Square, in the position (0,0) 
+	public Ash() {
+		path.add(position);
+		this.caught = 1;
+	}
+	
+	//Method that receives a String of movements and sees the new position of Ash, as well as the caught pokemon 
+	public void Move (String input) {
+		char move;
+		int n = input.length();
+		
+		for(int i = 0; i < n; i++ ) {
+			move = input.charAt(i);
+			Square new_pos = new Square(position.getPos_x(), position.getPos_y());
+			
+			//Checking which direction the movement was 
+			switch(move) {
+				case 'N': 
+					new_pos.setPos_y(new_pos.getPos_y() +1);
+					break;
+				case 'S': 
+					new_pos.setPos_y(new_pos.getPos_y() - 1);
+					break;
+				case 'E': 
+					new_pos.setPos_x(new_pos.getPos_x() + 1);
+					break;
+				case 'O':
+					new_pos.setPos_x(new_pos.getPos_x()-1);
+					break;
+				default: System.out.println("A direction inserted is not valid!");
+			}
+			
+			//If the new position is not in the tree already, it will be added and a new pokemon is caught
+			System.out.println(new_pos.getPos_y());
+			if(path.add(new_pos) != false) {
+				caught ++;
+			}
+			
+			//Setting position as the new position we moved to
+			position.setPos_x(new_pos.getPos_x());
+			position.setPos_y(new_pos.getPos_y());
+		}
+	}
+	
+	//Getter of the caught variable, returns the amount of pokemon caught
+	public int getCaught() {
+		return caught;
+	}
+	
+	
+}

@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		Scanner reader = new Scanner(System.in);
+		String moves = new String("");
+		Ash trainer = new Ash();
+		System.out.println("If you want to exist, insert QUIT");
+		while(true) {
+			System.out.println("Insert your movements: ");
+			//Reads the user input line
+			moves = reader.nextLine();
+			moves = moves.toUpperCase();
+			if(moves.compareTo("QUIT") == 0) {
+				System.out.println("Leaving the Pokemon World!");
+				break;
+			}
+			trainer.Move(moves);
+			
+			System.out.print("Ash caught ");
+			System.out.print(trainer.getCaught());
+			System.out.println(" Pokemon!");
+		}
+		
+		reader.close();
+	}
+
+}

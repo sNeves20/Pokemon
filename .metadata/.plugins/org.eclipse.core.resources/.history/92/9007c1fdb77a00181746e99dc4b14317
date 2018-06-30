@@ -1,0 +1,77 @@
+/**
+ *: pos_x - position of the x coordinate of the node in the grid, the starting nodes' position will be x = 0
+ * 			  pos_y - position of the y coordinate of the node in the grid, the starting nodes' position will be y = 0
+ * 
+ * 
+ * **/
+public class Square implements Comparable<Square> {
+	
+	private int pos_x, pos_y;
+	public Square left, right, up, down;
+	
+	public Square(int x, int y) {
+		this.pos_x = x;
+		this.pos_y = y;
+		
+		this.left = null;
+		this.right = null;
+		this.up = null;
+		this.down = null;
+	}
+	
+	
+	//Getters of the x and y coordinates
+	public int getPos_x() {
+		return pos_x;
+	}
+
+	public int getPos_y() {
+		return pos_y;
+	}
+	//Setters of the x and y coordinates
+	public void setPos_x(int pos_x) {
+		this.pos_x = pos_x;
+	}
+
+	public void setPos_y(int pos_y) {
+		this.pos_y = pos_y;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + pos_x;
+		result = prime * result + pos_y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Square other = (Square) obj;
+		if (pos_x != other.pos_x)
+			return false;
+		if (pos_y != other.pos_y)
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Square other) {
+		if(pos_x < other.pos_x && pos_y < other.pos_y)
+			return -1;
+		
+		return 0;
+	}
+	
+	
+	
+}

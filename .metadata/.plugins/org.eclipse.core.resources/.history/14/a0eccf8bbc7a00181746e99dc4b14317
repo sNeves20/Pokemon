@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		Scanner reader = new Scanner(System.in);
+		
+		Ash trainer = new Ash();
+		
+		System.out.println("Insert your movements: ");
+		//Reads the user input line
+		String moves = reader.nextLine();
+		trainer.Move(moves);
+		
+		System.out.print("Ash caught ");
+		System.out.print(trainer.getCaught());
+		
+		
+		
+	}
+
+}
